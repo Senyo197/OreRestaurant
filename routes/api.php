@@ -20,16 +20,3 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Landing page
-Route::get('/home', [LandingPageController::class, 'home'])->name('home');
-Route::get('/categories', [LandingPageController::class, 'categories'])->name('categories');
-Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('category');
-Route::get('/questions', [QuestionController::class, 'index'])->name('questions');
-Route::get('/questions/{question}', [QuestionController::class, 'show'])->name('question');
-
-
-// Authentication
-Route::post('/login', [AuthController::class, 'login'])->name('api.login');
-Route::post('/register', [AuthController::class, 'register'])->name('api.register');
-Route::post('/logout', [AuthController::class, 'logout'])->name('api.logout');
-

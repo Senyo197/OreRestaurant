@@ -1,8 +1,8 @@
 <?php
-namespace App\Repositories;
 
-interface MenuRepositoryInterface
-{
+namespace App\Interfaces;
+
+interface MenuRepositoryInterface{
     public function getAllMenus();
     public function getMenuById($id);
     public function createMenu(array $data);

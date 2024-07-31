@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\AdminDashboardController;
-use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\API\MenuController;
 use App\Http\Controllers\API\ProfileController;
-use App\Http\Controllers\API\QuestionController;
+use App\Http\Controllers\API\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,19 +18,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::middleware(['auth:web','admin'])->prefix('/admin')->name('admin.')->group(function () {
-    Route::get('/', [AdminDashboardController::class, 'home'])->name('home');
+Route::middleware(['auth:web','ore'])->prefix('/ore')->name('ore.')->group(function () {
+    Route::get('/', [HomePageController::class, 'home'])->name('home');
     Route::resource('menu', MenuController::class);
     Route::resource('order', OrderController::class);
-    Route::get('/users', [AdminDashboardController::class, 'users'])->name('users');
+    Route::get('/user', [HomePageController::class, 'user'])->name('user');
 });
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
 
 Route::get('/',[]);
 

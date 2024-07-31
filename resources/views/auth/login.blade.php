@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login - Tusome Admin</title>
+    <title>Login - OreRestaurant</title>
     <link rel="shortcut icon" type="image/png" href="{{ asset('admin-assets/images/logos/favicon.png') }}"/>
     <link rel="stylesheet" href="{{ asset('admin-assets/css/styles.min.css') }}"/>
 </head>
@@ -21,7 +21,7 @@
                     <div class="card mb-0">
                         <div class="card-body">
                             <span class="text-nowrap logo-img" style="font-weight: bold; font-size: large">
-                    Tusome - Admin
+                    OreRestaurant
                 </span>
                             @if ($errors->any())
                                 <div class="alert alert-danger mt-3">
@@ -53,9 +53,9 @@
                                             Remember this Device
                                         </label>
                                     </div>
-                                    {{--                                    @if (Route::has('password.request'))--}}
-                                    {{--                                    <a class="text-primary fw-bold" href="{{ route('password.request') }}">Forgot Password ?</a>--}}
-                                    {{--                                    @endif--}}
+                                    {{--@if (Route::has('password.request'))--}}
+                                    {{--<a class="text-primary fw-bold" href="{{ route('password.request') }}">Forgot Password ?</a>--}}
+                                    {{--@endif--}}
                                 </div>
                                 <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign
                                     In
@@ -68,8 +68,6 @@
         </div>
     </div>
 </div>
-<script src="{{ asset('admin-assets/libs/jquery/dist/jquery.min.js') }}"></script>
-<script src="{{ asset('admin-assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
 </body>
 
 </html>
