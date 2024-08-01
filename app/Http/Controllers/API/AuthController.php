@@ -35,7 +35,7 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $validationRules = [
-            'email' => 'required|unique:users|email|max:100',
+            'email' => 'required|unique:user|email|max:100',
             'name' => 'required|string|max:255',
             'password' => 'required|alpha_num|min:8',
         ];
@@ -61,10 +61,5 @@ class AuthController extends Controller
     public function logOut(Request $request)
     {
         return $this->authService->logOut();
-    }
-
-    public function checkAuth(Request $request)
-    {
-        return response()->json(['authenticated' => Auth::check()]);
     }
 }

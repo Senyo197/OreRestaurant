@@ -2,31 +2,59 @@
 
 namespace App\Services;
 
+use App\Interfaces\UserRepositoryInterface;
+use Illuminate\Http\JsonResponse;
 
-use App\Interfaces\OrderRepositoryInterface;
-use Illuminate\Support\Facades\Hash;
-
-class UserService implements UserServiceInterface
+class UserService
 {
-    protected $userRepository;
+    protected UserRepositoryInterface $userRepository;
 
     public function __construct(UserRepositoryInterface $userRepository)
     {
         $this->userRepository = $userRepository;
     }
 
-    public function getUserById($id)
+    public function getUserById($id): JsonResponse
     {
-        return $this->userRepository->getUserById($id);
+        $user = $this->userRepository->getUserById($id);
+
+        if ($user) {
+            return response()->json([
+                'status' => 'success',
+                'user' => $user,
+            ]);
+        }
+
+        return response()->json([
+            'status' => 'fail',
+            'message' => 'User not found.',
+        ]);
     }
 
-    public function getAllUsers()
+    public function getAllUsers(): JsonResponse
     {
-        return $this->userRepository->getAllUsers();
+        $users = $this->userRepository->getAllUsers();
+
+        return response()->json([
+            'status' => 'success',
+            'users' => $users,
+        ]);
     }
 
-    public function deleteUser($id)
+    public function deleteUser($id): JsonResponse
     {
-        return $this->userRepository->deleteUser($id);
+        $result = $this->userRepository->deleteUser($id);
+
+        if ($result) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'User deleted successfully.',
+            ]);
+        }
+
+        return response()->json([
+            'status' => 'fail',
+            'message' => 'Failed to delete user or user not found.',
+        ]);
     }
 }

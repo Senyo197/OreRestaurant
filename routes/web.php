@@ -1,30 +1,25 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\API\MenuController;
-use App\Http\Controllers\API\ProfileController;
 use App\Http\Controllers\API\OrderController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+// Authentication routes
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class, 'login']);
 
-
-Route::middleware(['auth:web','ore'])->prefix('/ore')->name('ore.')->group(function () {
+// Routes that require authentication
+Route::middleware(['auth:web'])->prefix('/ore')->name('ore.')->group(function () {
     Route::get('/', [HomePageController::class, 'home'])->name('home');
     Route::resource('menu', MenuController::class);
     Route::resource('order', OrderController::class);
-    Route::get('/user', [HomePageController::class, 'user'])->name('user');
 });
 
-Route::get('/',[]);
+// Redirect root to login or home page
+Route::get('/', function () {
+    return redirect()->route('login');
+});
 
 require __DIR__ . '/auth.php';

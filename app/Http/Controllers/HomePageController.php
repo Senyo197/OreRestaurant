@@ -9,24 +9,25 @@ use App\Services\MenuService;
 use App\Services\OrderService;
 use Illuminate\Http\Request;
 
-class AdminDashboardController extends Controller
+class HomePageController extends Controller
 {
-    protected orderService $orderService;
-    protected menuService $menuService;
+    protected OrderService $orderService;
+    protected MenuService $menuService;
 
-    public function __construct(orderService $OrderService, menuService $MenuService)
+    public function __construct(OrderService $orderService, MenuService $menuService)
     {
-        $this->orderService = $OrderService;
-        $this->menuService = $MenuService;
+        $this->orderService = $orderService;
+        $this->menuService = $menuService;
     }
-    public function home(){
+
+    public function home()
+    {
         $users = User::query()->where('user_type', 'user')->get();
-        $categories = Menu::query()->get();
+        $menus = Menu::query()->get();
         $orders = Order::query()->get();
 
-        return view('admin.home', compact('users', 'menu', 'order'));
+        return view('admin.home', compact('users', 'menus', 'orders'));
     }
-
 
     public function users()
     {

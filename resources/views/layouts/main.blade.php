@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tusome - Admin</title>
-    <link rel="shortcut icon" type="image/png" href="{{ asset('admin-assets/images/logos/favicon.png') }}"/>
-    <link rel="stylesheet" href="{{ asset('admin-assets/css/styles.min.css') }}"/>
+    <title>OreRestaurant</title>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('ore-assets/images/logos/favicon.png') }}"/>
+    <link rel="stylesheet" href="{{ asset('ore-assets/css/styles.min.css') }}"/>
 </head>
 
 <body>
@@ -19,7 +19,7 @@
         <div>
             <div class="brand-logo d-flex align-items-center justify-content-between">
                 <span class="text-nowrap logo-img" style="font-weight: bold; font-size: large">
-                    Tusome - Admin
+                    OreRestaurant
                 </span>
                 <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                     <i class="ti ti-x fs-8"></i>
@@ -30,7 +30,7 @@
                 <ul id="sidebarnav">
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('admin.home') }}" aria-expanded="false">
+                        <a class="sidebar-link" href="{{ route('ore.home') }}" aria-expanded="false">
                 <span>
                   <i class="ti ti-home"></i>
                 </span>
@@ -39,23 +39,23 @@
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('admin.categories.index') }}" aria-expanded="false">
+                        <a class="sidebar-link" href="{{ route('ore.menus.index') }}" aria-expanded="false">
                 <span>
                   <i class="ti ti-category"></i>
                 </span>
-                            <span class="hide-menu">Categories</span>
+                            <span class="hide-menu">Menus</span>
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('admin.questions.index') }}" aria-expanded="false">
+                        <a class="sidebar-link" href="{{ route('ore.orders.index') }}" aria-expanded="false">
                 <span>
                   <i class="ti ti-question-mark"></i>
                 </span>
-                            <span class="hide-menu">Questions</span>
+                            <span class="hide-menu">Orders</span>
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('admin.users') }}" aria-expanded="false">
+                        <a class="sidebar-link" href="{{ route('ore.users') }}" aria-expanded="false">
                 <span>
                   <i class="ti ti-users"></i>
                 </span>
@@ -103,11 +103,11 @@
         </div>
     </div>
 </div>
-<script src="{{ asset('admin-assets/libs/jquery/dist/jquery.min.js') }}"></script>
-<script src="{{ asset('admin-assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('admin-assets/js/sidebarmenu.js') }}"></script>
-<script src="{{ asset('admin-assets/js/app.min.js') }}"></script>
-<script src="{{ asset('admin-assets/libs/simplebar/dist/simplebar.js') }}"></script>
+<script src="{{ asset('ore-assets/libs/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ asset('ore-assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('ore-assets/js/sidebarmenu.js') }}"></script>
+<script src="{{ asset('ore-assets/js/app.min.js') }}"></script>
+<script src="{{ asset('ore-assets/libs/simplebar/dist/simplebar.js') }}"></script>
 
 @yield('scripts')
 </body>

@@ -2,8 +2,8 @@
 
 @section('main-content')
 <div class="container">
-    <h1>Create Menu</h1>
-    <form action="{{ route('ore.menu.store') }}" method="POST">
+    <h1>Create menus</h1>
+    <form action="{{ route('ore.menus.store') }}" method="POST">
         @csrf
 
         <div class="form-group">
@@ -38,7 +38,7 @@
             </select>
         </div>
 
-        <button type="submit" class="btn btn-primary">Create Menu</button>
+        <button type="submit" class="btn btn-primary">Create menus</button>
     </form>
 </div>
 @endsection

@@ -3,29 +3,26 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Order;
-use App\Services\OrderService;
-use Illuminate\Http\RedirectResponse;
+use App\Services\OrdersService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\View\View;
+use Illuminate\Http\Response;
 
 class OrderController extends Controller
 {
     /**
-     * @var OrderServiceInterface
+     * @var OrdersServiceInterface
      */
-    protected $orderService;
+    protected $ordersService;
 
     /**
      * Create a new controller instance.
      *
-     * @param OrderServiceInterface $orderService
+     * @param OrdersServiceInterface $ordersService
      * @return void
      */
-    public function __construct(OrderServiceInterface $orderService)
+    public function __construct(OrdersService $ordersService)
     {
-        $this->orderService = $orderService;
+        $this->ordersService = $ordersService;
     }
 
     /**
@@ -42,7 +39,7 @@ class OrderController extends Controller
             'quantity' => 'required|integer|min:1',
         ]);
 
-        $order = $this->orderService->placeOrder($data);
+        $order = $this->ordersService->placeOrder($data);
 
         return response()->json($order, Response::HTTP_CREATED);
     }
@@ -55,7 +52,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $order = $this->orderService->getOrderById($id);
+        $order = $this->ordersService->getOrderById($id);
 
         if (!$order) {
             return response()->json(['message' => 'Order not found'], Response::HTTP_NOT_FOUND);
@@ -71,7 +68,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = $this->orderService->getAllOrders();
+        $orders = $this->ordersService->getAllOrders();
 
         return response()->json($orders);
     }

@@ -2,12 +2,16 @@
 
 namespace App\Interfaces;
 
-interface MenuRepositoryInterface{
-    public function getAllMenus();
-    public function getMenuById($id);
-    public function createMenu(array $data);
-    public function updateMenu($id, array $data);
-    public function deleteMenu($id);
-    public function getDiscountedMenus();
-    public function getDrinks();
+use App\Models\Menu;
+use Illuminate\Database\Eloquent\Collection;
+
+interface MenuRepositoryInterface
+{
+    public function getAllMenus(): Collection;
+    public function getMenuById(int $id): ?Menu;
+    public function createMenu(array $data): Menu;
+    public function updateMenu(int $id, array $data): ?Menu;
+    public function deleteMenu(int $id): bool;
+    public function getDiscountedMenus(): Collection;
+    public function getDrinks(): Collection;
 }

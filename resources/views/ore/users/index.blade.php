@@ -1,10 +1,10 @@
-@extends('layouts.admin')
+@extends('layouts.ore')
 
 @section('main-content')
     <div class="container">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <h4 style="margin: 0;">Users</h4>
-{{--            <a href="{{ route('admin.categories.create') }}" class="btn btn-sm btn-primary">Create Category</a>--}}
+{{--            <a href="{{ route('ore.menus.create') }}" class="btn btn-sm btn-primary">Create Menu</a>--}}
         </div>
 
 {{--        @if(session('success'))--}}

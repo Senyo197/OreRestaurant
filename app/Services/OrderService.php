@@ -2,30 +2,60 @@
 
 namespace App\Services;
 
-
 use App\Interfaces\OrderRepositoryInterface;
+use Illuminate\Http\JsonResponse;
 
-class OrderService implements OrderServiceInterface
+class OrderService
 {
-    protected $orderRepository;
+    protected OrderRepositoryInterface $orderRepository;
 
     public function __construct(OrderRepositoryInterface $orderRepository)
     {
         $this->orderRepository = $orderRepository;
     }
 
-    public function placeOrder(array $data)
+    public function placeOrder(array $data): JsonResponse
     {
-        return $this->orderRepository->createOrder($data);
+        $order = $this->orderRepository->createOrder($data);
+
+        if ($order) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Order placed successfully.',
+                'order' => $order,
+            ]);
+        }
+
+        return response()->json([
+            'status' => 'fail',
+            'message' => 'Failed to place order.',
+        ]);
     }
 
-    public function getOrderById($id)
+    public function getOrderById($id): JsonResponse
     {
-        return $this->orderRepository->getOrderById($id);
+        $order = $this->orderRepository->getOrderById($id);
+
+        if ($order) {
+            return response()->json([
+                'status' => 'success',
+                'order' => $order,
+            ]);
+        }
+
+        return response()->json([
+            'status' => 'fail',
+            'message' => 'Order not found.',
+        ]);
     }
 
-    public function getAllOrders()
+    public function getAllOrders(): JsonResponse
     {
-        return $this->orderRepository->getAllOrders();
+        $orders = $this->orderRepository->getAllOrders();
+
+        return response()->json([
+            'status' => 'success',
+            'orders' => $orders,
+        ]);
     }
 }

@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login - OreRestaurant</title>
-    <link rel="shortcut icon" type="image/png" href="{{ asset('admin-assets/images/logos/favicon.png') }}"/>
-    <link rel="stylesheet" href="{{ asset('admin-assets/css/styles.min.css') }}"/>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('ore-assets/images/logos/favicon.png') }}"/>
+    <link rel="stylesheet" href="{{ asset('ore-assets/css/styles.min.css') }}"/>
 </head>
 
 <body>
@@ -68,6 +68,8 @@
         </div>
     </div>
 </div>
+<script src="{{ asset('ore-assets/libs/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ asset('ore-assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
 </body>
 
 </html>

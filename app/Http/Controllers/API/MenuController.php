@@ -3,43 +3,40 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Menu;
-use App\Services\MenuService;
-use Illuminate\Http\RedirectResponse;
+use App\Services\MenusService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
 
 class MenuController extends Controller
 {
-    protected $menuRepository;
+    protected $menusService;
 
-    public function __construct(MenuRepositoryInterface $menuRepository)
+    public function __construct(MenuService $menuService)
     {
-        $this->menuRepository = $menuRepository;
+        $this->menusService = $menusService;
     }
 
     public function index()
     {
-        $menus = $this->menuRepository->getAllMenus();
+        $menus = $this->menusService->getAllMenus();
         return view('menus.index', compact('menus'));
     }
 
     public function show($id)
     {
-        $menu = $this->menuRepository->getMenuById($id);
+        $menu = $this->menusService->getMenuById($id);
         return view('menus.show', compact('menu'));
     }
 
     public function discounted()
     {
-        $menus = $this->menuRepository->getDiscountedMenus();
+        $menus = $this->menusService->getDiscountedMenus();
         return view('menus.discounted', compact('menus'));
     }
 
     public function drinks()
     {
-        $menus = $this->menuRepository->getDrinks();
+        $menus = $this->menusService->getDrinks();
         return view('menus.drinks', compact('menus'));
     }
 }
