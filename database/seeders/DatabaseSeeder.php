@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => 'Ore Admin',
             'email' => 'admin@ore.com',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('ore-pwd'),
             'is_staff' => true,
             'created_at' => now(),
             'updated_at' => now(),

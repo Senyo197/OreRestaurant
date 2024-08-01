@@ -11,24 +11,41 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'name',
         'email',
         'password',
         'is_staff',
     ];
-    
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
-    
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
     protected $casts = [
         'password' => 'hashed',
     ];
 
     /**
-     * Get the orders for the user.
+     * Get the orders associated with the user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function orders()
     {

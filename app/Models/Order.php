@@ -9,6 +9,11 @@ class Order extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'user_id',
         'menu_id',
@@ -17,6 +22,8 @@ class Order extends Model
 
     /**
      * Get the user that owns the order.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {
@@ -25,6 +32,8 @@ class Order extends Model
 
     /**
      * Get the menu that owns the order.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function menu()
     {

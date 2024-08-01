@@ -3,40 +3,72 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Services\MenusService;
+use App\Services\MenuService;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class MenuController extends Controller
 {
-    protected $menusService;
+    /**
+     * The MenuService instance.
+     *
+     * @var MenuService
+     */
+    protected $menuService;
 
+    /**
+     * Create a new controller instance.
+     *
+     * @param MenuService $menuService
+     * @return void
+     */
     public function __construct(MenuService $menuService)
     {
-        $this->menusService = $menusService;
+        $this->menuService = $menuService;
     }
 
+    /**
+     * Display a listing of all menus.
+     *
+     * @return View
+     */
     public function index()
     {
-        $menus = $this->menusService->getAllMenus();
+        $menus = $this->menuService->getAllMenus();
         return view('menus.index', compact('menus'));
     }
 
+    /**
+     * Display the specified menu by ID.
+     *
+     * @param int $id
+     * @return View
+     */
     public function show($id)
     {
-        $menu = $this->menusService->getMenuById($id);
+        $menu = $this->menuService->getMenuById($id);
         return view('menus.show', compact('menu'));
     }
 
+    /**
+     * Display a listing of discounted menus.
+     *
+     * @return View
+     */
     public function discounted()
     {
-        $menus = $this->menusService->getDiscountedMenus();
+        $menus = $this->menuService->getDiscountedMenus();
         return view('menus.discounted', compact('menus'));
     }
 
+    /**
+     * Display a listing of drinks.
+     *
+     * @return View
+     */
     public function drinks()
     {
-        $menus = $this->menusService->getDrinks();
+        $menus = $this->menuService->getDrinks();
         return view('menus.drinks', compact('menus'));
     }
 }
